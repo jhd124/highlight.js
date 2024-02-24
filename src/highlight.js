@@ -790,6 +790,8 @@ const HLJS = function(hljs) {
     }
 
     fire("after:highlightElement", { el: element, result, text });
+
+    return result
   }
 
   /**
