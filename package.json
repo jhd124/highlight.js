@@ -1,5 +1,5 @@
 {
-  "name": "@jhd/highlight",
+  "name": "jhd-forked-highlight",
   "description": "Syntax highlighting with language autodetection.",
   "keywords": [],
   "homepage": "https://highlightjs.org/",
