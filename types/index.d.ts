@@ -3,8 +3,8 @@
 // For TS consumers who use Node and don't have dom in their tsconfig lib, import the necessary types here.
 /// <reference lib="dom" />
 
-declare module 'highlight.js/private' {
-    import { CompiledMode, Mode, Language } from "highlight.js";
+declare module 'jhd-forked-highlight/private' {
+    import { CompiledMode, Mode, Language } from "jhd-forked-highlight";
 
     type MatchType = "begin" | "end" | "illegal"
     type EnhancedMatch = RegExpMatchArray & {rule: CompiledMode, type: MatchType}
@@ -13,9 +13,9 @@ declare module 'highlight.js/private' {
     type KeywordData = [string, number];
     type KeywordDict = Record<string, KeywordData>
 }
-declare module 'highlight.js' {
+declare module 'jhd-forked-highlight' {
 
-    import { KeywordDict } from "highlight.js/private";
+    import { KeywordDict } from "jhd-forked-highlight/private";
 
     export type HLJSApi = PublicApi & ModesAPI
 
@@ -267,8 +267,8 @@ declare module 'highlight.js' {
 
 }
 
-declare module 'highlight.js/lib/languages/*' {
-    import { LanguageFn } from "highlight.js";
+declare module 'jhd-forked-highlight/lib/languages/*' {
+    import { LanguageFn } from "jhd-forked-highlight";
     const defineLanguage: LanguageFn;
     export default defineLanguage;
 }
