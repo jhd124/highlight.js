@@ -85,39 +85,39 @@ jobs:
           echo We seem to be releasing `${RELEASING}`.
           false
 
-      - name: Checkout cdn-release
-        uses: actions/checkout@v4
-        with:
-          repository: 'highlightjs/cdn-release'
-          path: 'cdn-release'
-          token: ${{ secrets.CDN_REPO_TOKEN }}
-          ref: ${{ env.BRANCH_NAME }}
+      # - name: Checkout cdn-release
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: 'highlightjs/cdn-release'
+      #     path: 'cdn-release'
+      #     token: ${{ secrets.CDN_REPO_TOKEN }}
+      #     ref: ${{ env.BRANCH_NAME }}
 
-      - name: Build CDN package
-        run: node ./tools/build.js -t cdn :common
+      # - name: Build CDN package
+      #   run: node ./tools/build.js -t cdn :common
 
-      - name: Commmit & Push cdn-release ${{ env.TAG_NAME }}
-        working-directory: ./cdn-release
-        run: |
-          rm -r ./build
-          mv ../build/ ./build/
-          mv ./build/DIGESTS.md .
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add ./build/
-          git add ./DIGESTS.md
-          git commit -m'Update to version ${{ env.TAG_NAME }}'
-          git tag ${TAG_NAME}
-          git push -f --atomic origin ${BRANCH_NAME} ${TAG_NAME}
+      # - name: Commmit & Push cdn-release ${{ env.TAG_NAME }}
+      #   working-directory: ./cdn-release
+      #   run: |
+      #     rm -r ./build
+      #     mv ../build/ ./build/
+      #     mv ./build/DIGESTS.md .
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add ./build/
+      #     git add ./DIGESTS.md
+      #     git commit -m'Update to version ${{ env.TAG_NAME }}'
+      #     git tag ${TAG_NAME}
+      #     git push -f --atomic origin ${BRANCH_NAME} ${TAG_NAME}
 
-      - name: Publish cdn-assets to NPM
-        id: publish_cdn
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          check-version: true
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./cdn-release/build/package.json
-          tag: ${{ env.NPM_TAG }}
+      # - name: Publish cdn-assets to NPM
+      #   id: publish_cdn
+      #   uses: JS-DevTools/npm-publish@v3
+      #   with:
+      #     check-version: true
+      #     token: ${{ secrets.NPM_TOKEN }}
+      #     package: ./cdn-release/build/package.json
+      #     tag: ${{ env.NPM_TAG }}
 
         # log.info('Updating CDN repo at %s' % settings.HLJS_CDN_SOURCE)
         # run(['nodejs', 'tools/build.js', '--target', 'cdn', ':common'])
