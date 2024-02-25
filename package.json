@@ -1,10 +1,7 @@
 {
-  "name": "highlight.js",
+  "name": "@jhd/highlight",
   "description": "Syntax highlighting with language autodetection.",
-  "keywords": [
-    "highlight",
-    "syntax"
-  ],
+  "keywords": [],
   "homepage": "https://highlightjs.org/",
   "version": "11.9.1",
   "author": "Josh Goebel <hello@joshgoebel.com>",
